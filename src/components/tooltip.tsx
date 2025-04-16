@@ -51,7 +51,7 @@ export function Tooltip({
                 side={side}
                 className={cn(
                   "relative z-50 text-center text-white shadow-lg will-change-transform",
-                  "max-w-52 rounded bg-app-gray-900 px-2 py-1.5 text-sm font-medium",
+                  "max-w-52 rounded bg-gray-900 px-2 py-1.5 text-sm font-medium",
                   "animate-in fade-in-0 zoom-in-95",
 
                   "data-[state=closed]:zoom-out-95",

@@ -74,7 +74,7 @@ export function SiteHeader(props: SiteHeaderProps) {
             >
               <path
                 d="M14 2L2 30"
-                className="stroke-app-gray-400"
+                className="stroke-gray-400"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
@@ -145,7 +145,7 @@ export function SiteHeader(props: SiteHeaderProps) {
             "no-scrollbar relative isolate z-0 flex flex-shrink-0 overflow-x-auto py-2"
           )}
         >
-          <AnimatedTabs className="rounded-[6px] bg-app-gray-300">
+          <AnimatedTabs className="rounded-[6px] bg-neutral-200">
             {tabs.map((t) => {
               const isActive =
                 router.location.pathname === t.href ||
@@ -172,7 +172,7 @@ export function SiteHeader(props: SiteHeaderProps) {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         className={cn(
-                          "absolute inset-x-0 -bottom-2 h-[2px] rounded bg-app-gray-900"
+                          "absolute inset-x-0 -bottom-2 h-[2px] rounded bg-gray-900"
                         )}
                       />
                     )}

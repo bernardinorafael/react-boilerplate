@@ -29,7 +29,7 @@ const textarea = tv({
     "shadow-black/[0.08]",
     "bg-[--textarea-root-bg-color]",
     "transition",
-    "placeholder:text-app-gray-600",
+    "placeholder:text-gray-600",
     "resize-none",
     "focus-within:ring-offset-1",
     "ring-[--textarea-border-color]",

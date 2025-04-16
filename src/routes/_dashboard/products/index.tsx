@@ -173,7 +173,7 @@ function RouteComponent() {
                     <DataTable.Row key={product.id}>
                       <DataTable.Cell className="font-medium">
                         <div className="flex items-center gap-4">
-                          <Package className="size-5 stroke-[1.5px] text-app-gray-700" />
+                          <Package className="size-5 stroke-[1.5px] text-gray-700" />
                           <DataTable.RowLink asChild>
                             <Link
                               to="/products/$productId"
@@ -227,9 +227,9 @@ const ProductSkeleton = () => (
             <Squircle
               cornerSmoothing={1}
               cornerRadius={10}
-              className="bg-app-gray-100 p-2 shadow-xs"
+              className="bg-gray-100 p-2 shadow-xs"
             >
-              <Package className="size-5 text-app-gray-700" />
+              <Package className="size-5 text-gray-700" />
             </Squircle>
             consequat aliqua officia ipsum
           </div>

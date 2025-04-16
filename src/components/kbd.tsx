@@ -19,7 +19,7 @@ export function Kbd(props: {
         "border",
         size === "sm" && "size-4",
         intent === "neutral" &&
-          "border-gray-400 bg-app-gray-50 text-gray-500 shadow-gray-400",
+          "border-gray-400 bg-gray-50 text-gray-500 shadow-gray-400",
         intent === "danger" && "border-red-300 bg-red-200 text-red-400 shadow-red-300",
         intent === "primary" &&
           "border-purple-400 bg-purple-300/20 text-white shadow-purple-400"

@@ -84,17 +84,6 @@ export default {
         "border-50": "var(--border-50)",
         "border-100": "var(--border-100)",
         "border-200": "var(--border-200)",
-
-        "app-gray-50": "var(--app-gray-50)",
-        "app-gray-100": "var(--app-gray-100)",
-        "app-gray-200": "var(--app-gray-200)",
-        "app-gray-300": "var(--app-gray-300)",
-        "app-gray-400": "var(--app-gray-400)",
-        "app-gray-500": "var(--app-gray-500)",
-        "app-gray-600": "var(--app-gray-600)",
-        "app-gray-700": "var(--app-gray-700)",
-        "app-gray-800": "var(--app-gray-800)",
-        "app-gray-900": "var(--app-gray-900)",
       },
 
       backgroundColor: {

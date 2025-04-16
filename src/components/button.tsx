@@ -46,7 +46,7 @@ export const buttonVariants = tv({
         "[--b-color-ring:theme(colors.black/0.08)]",
         "[--b-color-text:theme(colors.currentColor)]",
         "[--b-color-icon:theme(colors.gray.500)]",
-        "[--b-color-bg-hover:theme(colors.app-gray-100)]",
+        "[--b-color-bg-hover:theme(colors.gray.200)]",
         "[--b-border-color:theme(colors.transparent)]",
       ],
       danger: [
@@ -56,7 +56,6 @@ export const buttonVariants = tv({
         "[--b-color-icon:theme(colors.white)]",
         "[--b-color-bg-hover:theme(colors.red.600)]",
         "[--b-border-color:theme(colors.transparent)]",
-        // disabled
       ],
       link: [
         "[--b-color-bg:theme(colors.transparent)]",

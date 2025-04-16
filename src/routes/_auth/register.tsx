@@ -63,7 +63,6 @@ function RouteComponent() {
             })
             return
           }
-
           if (err.message.includes("e-mail")) {
             form.setError("email", {
               message: "Este e-mail está indisponível",
@@ -194,8 +193,9 @@ function RouteComponent() {
         />
 
         <Button
-          type="submit"
           full
+          type="submit"
+          size="lg"
           variant="primary"
           className="w-full"
           disabled={form.formState.isSubmitting}

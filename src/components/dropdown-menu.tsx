@@ -138,11 +138,11 @@ function Item({
         // Intent
         intent === "danger" && [
           "text-red-700 [&_svg]:text-red-700",
-          "focus:bg-app-gray-50 focus:text-word-primary [&_svg]:focus:text-word-primary",
+          "focus:bg-gray-50 focus:text-word-primary [&_svg]:focus:text-word-primary",
         ],
         intent === "neutral" && [
           "text-purple-800 [&_svg]:text-purple-800",
-          "focus:bg-app-gray-50 focus:text-word-primary [&_svg]:focus:text-word-primary",
+          "focus:bg-gray-50 focus:text-word-primary [&_svg]:focus:text-word-primary",
         ],
         className
       )}

@@ -34,11 +34,11 @@ const root = tv({
       primary: "border-purple-500/10 bg-purple-50 text-purple-600",
       beta: "bg-blue-200 text-blue-500",
       slate: [
-        "border-black/[0.16] bg-app-gray-700 text-white",
+        "border-black/[0.16] bg-gray-700 text-white",
         "before:absolute before:inset-0 before:rounded-inherit before:bg-black/8",
       ],
       pro: [
-        "overflow-hidden bg-app-gray-900 text-white shadow-[0_1px_2px,0_1px_2px] shadow-black/10",
+        "overflow-hidden bg-gray-900 text-white shadow-[0_1px_2px,0_1px_2px] shadow-black/10",
         "before:shadow-[inset_0_1px_0,inset_0_0_0_1px] before:shadow-white/10",
         "before:absolute before:inset-0 before:rounded-inherit",
       ],

@@ -228,7 +228,7 @@ function RouteComponent() {
             <section className="space-y-2">
               <p className="text-base font-medium">Criado em</p>
               <div className="flex items-center gap-1.5 text-base">
-                <Calendar1 size={16} className="text-app-gray-700" />
+                <Calendar1 size={16} className="text-gray-700" />
                 <span>{formatDate(product?.created as string)}</span>
               </div>
             </section>
@@ -236,7 +236,7 @@ function RouteComponent() {
             <section className="space-y-2">
               <p className="text-base font-medium">Atualizado em</p>
               <div className="flex items-center gap-1.5 text-base">
-                <CalendarSync size={16} className="text-app-gray-700" />
+                <CalendarSync size={16} className="text-gray-700" />
                 <span>{formatDate(product?.updated as string)}</span>
               </div>
             </section>

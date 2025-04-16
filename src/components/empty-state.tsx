@@ -29,9 +29,9 @@ export function EmptyState(props: {
       })}
     >
       {props.icon && (
-        <div className="centered isolate">
+        <div className="isolate centered">
           <Squircle cornerSmoothing={1} cornerRadius={12} asChild>
-            <div className="grid place-items-center border border-border-50 bg-app-gray-50 p-3">
+            <div className="grid place-items-center border border-border-50 bg-gray-50 p-3">
               {React.createElement(props.icon, {
                 className: cn("stroke-[1.5px] size-6"),
               })}

@@ -78,7 +78,7 @@ const input = tv({
     "px-[--input-px]",
     "pl-[--input-pl]",
     "appearence-none truncate rounded-inherit",
-    "placeholder:text-app-gray-600",
+    "placeholder:text-gray-600",
   ],
 })
 
@@ -150,7 +150,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div
           className={cn(
             "flex items-center rounded-l-inherit font-medium text-word-secondary",
-            "border-r bg-app-gray-50 px-[--input-px] text-sm",
+            "border-r bg-gray-50 px-[--input-px] text-sm",
             !prefix && "hidden"
           )}
         >
@@ -177,7 +177,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div
           className={cn(
             "flex items-center rounded-r-inherit text-base text-word-secondary",
-            "border-l bg-app-gray-50 px-[--input-px]",
+            "border-l bg-gray-50 px-[--input-px]",
             !suffix && "hidden"
           )}
         >

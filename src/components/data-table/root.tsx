@@ -18,7 +18,7 @@ const root = tv({
     "bg-[--data-table-bg]",
     "p-[--data-table-p]",
     "[--data-table-border-width:theme(spacing.px)]",
-    "[--data-table-focus-ring-color:theme(colors.app-gray-300)]",
+    "[--data-table-focus-ring-color:theme(colors.gray-300)]",
     "[--data-table-focus-ring-width:0.1875rem]",
     "[--data-table-p:theme(spacing.1)]",
     [

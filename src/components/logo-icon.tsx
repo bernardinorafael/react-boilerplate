@@ -13,7 +13,7 @@ export const LogoIcon: React.FC<LogoIconProps> = ({ width = 26, className }) => 
       width={`${width}`}
       height={`${width}`}
       viewBox="0 0 24 24"
-      className={cn("flex-shrink-0 fill-app-gray-900", className)}
+      className={cn("flex-shrink-0 fill-gray-900", className)}
       xmlns="http://www.w3.org/2000/svg"
       role="img"
       aria-hidden="true"

@@ -227,7 +227,7 @@ function Toast({ toast }: { toast: Toast }) {
           }
           className={cn(
             "mx-auto rounded-full pl-3 pr-2.5 text-base text-white shadow-xl shadow-black/25",
-            "flex h-11 w-fit min-w-[21.25rem] items-center bg-app-gray-900",
+            "flex h-11 w-fit min-w-[21.25rem] items-center bg-gray-900",
             "before:rounded-full before:shadow-[inset_0_1px_0] before:shadow-white/10",
             "before:pointer-events-none before:absolute before:inset-px"
           )}
