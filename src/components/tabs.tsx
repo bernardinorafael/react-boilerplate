@@ -3,7 +3,6 @@ import React from "react"
 import { cn } from "@/src/util/cn"
 import * as PrimitiveTabs from "@radix-ui/react-tabs"
 import { AnimatePresence, motion } from "motion/react"
-import { useQueryState } from "nuqs"
 
 type Tab = {
   label: string
@@ -17,40 +16,19 @@ type Tab = {
 type TabsProps = {
   tabs: Tab[]
   onChange?: (v: string) => void
-} & (
-  | {
-      defaultTab?: string
-    }
-  | {
-      selected: string
-      children?: React.ReactNode
-    }
-)
+  selected: string
+}
 
-export function Tabs({ tabs, onChange, ...props }: TabsProps) {
+export function Tabs({ selected, tabs, onChange }: TabsProps) {
   const internalId = React.useId()
-  const isControlled = "selected" in props
-
-  const [tab, setTab] = useQueryState("tab")
-
-  const activeTab = isControlled
-    ? props.selected
-    : (tab ?? props.defaultTab ?? tabs[0].value)
-
-  function setActiveTab(v: string) {
-    if (!isControlled) {
-      setTab(v)
-    } else if (onChange) {
-      onChange(v)
-    }
-  }
+  const activeTab = selected
 
   return (
     <PrimitiveTabs.Root
       data-tabs
       value={activeTab}
       className="flex-1 space-y-8"
-      onValueChange={setActiveTab}
+      onValueChange={onChange}
     >
       <PrimitiveTabs.List className="border-b text-base text-word-secondary">
         <div className="mb-1 flex gap-6">
@@ -76,7 +54,6 @@ export function Tabs({ tabs, onChange, ...props }: TabsProps) {
               {t.icon}
               {t.label}
               {t.badge}
-
               {activeTab === t.value && (
                 <AnimatePresence>
                   <motion.div
@@ -94,15 +71,11 @@ export function Tabs({ tabs, onChange, ...props }: TabsProps) {
         </div>
       </PrimitiveTabs.List>
 
-      {isControlled && props.children ? (
-        <PrimitiveTabs.Content value={activeTab}>{props.children}</PrimitiveTabs.Content>
-      ) : (
-        tabs.map((t) => (
-          <PrimitiveTabs.Content key={t.value} value={t.value}>
-            {t.children}
-          </PrimitiveTabs.Content>
-        ))
-      )}
+      {tabs.map((t) => (
+        <PrimitiveTabs.Content key={t.value} value={t.value}>
+          {t.children}
+        </PrimitiveTabs.Content>
+      ))}
     </PrimitiveTabs.Root>
   )
 }
