@@ -80,6 +80,7 @@ export default {
 
         "word-primary": "var(--word-primary)",
         "word-secondary": "var(--word-secondary)",
+        "word-placeholder": "var(--word-placeholder)",
 
         "border-50": "var(--border-50)",
         "border-100": "var(--border-100)",

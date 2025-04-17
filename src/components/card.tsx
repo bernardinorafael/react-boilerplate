@@ -120,7 +120,7 @@ const Description = forwardRef(function CardDescription(
       ref={ref}
       data-card-description=""
       className={cn(
-        "text-sm font-normal",
+        "text-sm font-normal text-word-secondary",
         "col-start-1 row-start-[--card-description-row-start,1] text-balance",
         className
       )}
@@ -177,7 +177,7 @@ const Body = forwardRef(function CardBody(
         >
           <div
             className={cn(
-              "bg-surface-200 shadow-xs rounded-xl px-[--card-body-px] py-[--card-body-py]",
+              "rounded-xl bg-surface-200 px-[--card-body-px] py-[--card-body-py] shadow-xs",
               className
             )}
           >

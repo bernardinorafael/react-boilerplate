@@ -3,10 +3,13 @@ import * as Dialog from "@/src/components/dialog"
 import type { DialogProps } from "@/src/components/dialog/root"
 import { Field } from "@/src/components/field"
 import { Input } from "@/src/components/input"
+import { toast } from "@/src/components/toast/toast"
 import { nameSchema } from "@/src/schemas"
 import { getQueryClient } from "@/src/util/get-query-client"
+import { isHTTPError } from "@/src/util/http/error"
 import { request } from "@/src/util/http/request"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useMutation } from "@tanstack/react-query"
 import { Controller, useForm } from "react-hook-form"
 import { z } from "zod"
 
@@ -28,9 +31,9 @@ export function NewProductDialog(
     resolver: zodResolver(schema),
   })
 
-  async function onSubmit(data: z.infer<typeof schema>) {
-    try {
-      await request({
+  const { mutateAsync: handleCreateProduct, isPending: isCreatingProduct } = useMutation({
+    mutationFn: (data: z.infer<typeof schema>) => {
+      return request({
         path: "api/v1/products",
         method: "POST",
         data: {
@@ -38,12 +41,23 @@ export function NewProductDialog(
           price: Number(data.price),
         },
       })
-
+    },
+    onSuccess: async () => {
       await query.invalidateQueries({ queryKey: ["products"] })
+      toast.success("Produto adicionado ao catálogo")
       onOpenChange(false)
-    } catch (error) {
-      console.error(error)
-    }
+    },
+    onError: (err) => {
+      if (isHTTPError(err)) {
+        onOpenChange(false)
+        toast.error("Houve um erro ao cadastrar um produto")
+        return
+      }
+    },
+  })
+
+  async function onSubmit(data: z.infer<typeof schema>) {
+    await handleCreateProduct(data)
   }
 
   function onOpenChange(open: boolean) {
@@ -98,12 +112,12 @@ export function NewProductDialog(
       </Dialog.Content>
 
       <Dialog.Footer>
-        <Dialog.Close disabled={form.formState.isSubmitting}>Cancelar</Dialog.Close>
+        <Dialog.Close disabled={isCreatingProduct}>Cancelar</Dialog.Close>
         <Button
           type="submit"
           form={formId}
-          disabled={form.formState.isSubmitting}
-          loading={form.formState.isSubmitting}
+          disabled={isCreatingProduct}
+          loading={isCreatingProduct}
         >
           Adicionar produto
         </Button>

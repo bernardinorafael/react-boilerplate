@@ -78,7 +78,7 @@ const input = tv({
     "px-[--input-px]",
     "pl-[--input-pl]",
     "appearence-none truncate rounded-inherit",
-    "placeholder:text-gray-600",
+    "placeholder:text-word-placeholder",
   ],
 })
 
@@ -169,7 +169,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         />
 
         {type === "search" && (
-          <div className="absolute left-2 top-1/2 -translate-y-1/2 text-word-secondary">
+          <div className="absolute left-2 top-1/2 -translate-y-1/2 text-word-placeholder">
             <Search size={16} />
           </div>
         )}

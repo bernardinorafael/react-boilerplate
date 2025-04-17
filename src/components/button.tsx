@@ -46,7 +46,7 @@ export const buttonVariants = tv({
         "[--b-color-ring:theme(colors.black/0.08)]",
         "[--b-color-text:theme(colors.currentColor)]",
         "[--b-color-icon:theme(colors.gray.500)]",
-        "[--b-color-bg-hover:theme(colors.gray.200)]",
+        "[--b-color-bg-hover:theme(colors.gray.100)]",
         "[--b-border-color:theme(colors.transparent)]",
       ],
       danger: [
@@ -78,7 +78,7 @@ export const buttonVariants = tv({
   compoundVariants: [
     {
       variant: "link",
-      className: "px-0 hover:underline hover:underline-offset-[3px]",
+      className: "px-0 hover:text-purple-700",
     },
   ],
 })

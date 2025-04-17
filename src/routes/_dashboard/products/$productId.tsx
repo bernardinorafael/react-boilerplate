@@ -11,6 +11,7 @@ import { Fieldset } from "@/src/components/fieldset"
 import { Input } from "@/src/components/input"
 import { PageLayout } from "@/src/components/layout/page-layout"
 import { PageLoader } from "@/src/components/page-loader"
+import { Separator } from "@/src/components/separator"
 import { toast } from "@/src/components/toast/toast"
 import { UnsavedChanges } from "@/src/components/unsaved-changes"
 import { DeleteProductAlertDialog } from "@/src/modules/products/components/delete-product-alert-dialog"
@@ -73,6 +74,45 @@ function RouteComponent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoadingProduct])
 
+  const { mutateAsync: handleChangeProductStatus } = useMutation({
+    mutationFn: (enabled: boolean) => {
+      return request({
+        method: "PATCH",
+        path: `api/v1/products/${product?.id}/status`,
+        data: {
+          enabled,
+        },
+      })
+    },
+    onMutate: async (enabled) => {
+      const productKey = ["product", product?.id]
+
+      await query.cancelQueries({ queryKey: productKey })
+      await query.cancelQueries({ queryKey: ["products"] })
+
+      const prev = query.getQueryData<Product>(productKey)
+
+      query.setQueryData(productKey, (old: Product) => ({ ...old, enabled }))
+
+      return {
+        previousData: prev,
+      }
+    },
+    onError: (err) => {
+      if (isHTTPError(err)) {
+        toast.error("Houve um erro ao atualizar o produto")
+        return
+      }
+    },
+    onSuccess: () => {
+      toast.success("Produto atualizado com sucesso")
+    },
+    onSettled: () => {
+      query.invalidateQueries({ queryKey: ["product", product?.id] })
+      query.invalidateQueries({ queryKey: ["products"] })
+    },
+  })
+
   const { mutateAsync: handleUpdateProduct } = useMutation({
     mutationFn: (data: z.infer<typeof schema>) => {
       return request({
@@ -114,12 +154,25 @@ function RouteComponent() {
       <PageLayout
         title={truncate(product?.name as string, 70)}
         description="Visualize e edite as informações do produto"
-        titleBadge={<Badge intent="success">Ativo</Badge>}
+        titleBadge={
+          product?.enabled ? (
+            <Badge intent="success">Ativo</Badge>
+          ) : (
+            <Badge intent="slate">Arquivado</Badge>
+          )
+        }
+        goBackLink={{ label: "Produtos", to: "/products" }}
         actions={
           <ActionDropdown
-            className="w-[200px]"
+            className="w-[220px]"
             align="end"
             items={[
+              {
+                label: "Desarquivar produto",
+                visible: !product?.enabled,
+                onAction: () => handleChangeProductStatus(true),
+                intent: "neutral",
+              },
               {
                 label: "Excluir produto",
                 intent: "danger",
@@ -127,8 +180,9 @@ function RouteComponent() {
               },
               {
                 label: "Arquivar produto",
-                tooltipLabel: "Não implementado",
-                disabled: true,
+                description: "As ações relacionadas a este produto serão limitadas",
+                visible: product?.enabled,
+                onAction: () => handleChangeProductStatus(false),
                 intent: "danger",
               },
             ]}
@@ -169,6 +223,7 @@ function RouteComponent() {
                                 size="sm"
                                 value={field.value}
                                 onChange={field.onChange}
+                                disabled={!product?.enabled}
                                 className="max-w-[70%]"
                                 placeholder="Insira o nome do produto"
                               />
@@ -191,6 +246,7 @@ function RouteComponent() {
                               <Input
                                 size="sm"
                                 prefix="R$"
+                                disabled={!product?.enabled}
                                 value={field.value}
                                 onChange={field.onChange}
                                 className="max-w-[70%]"
@@ -205,6 +261,12 @@ function RouteComponent() {
                   </Card.Body>
                 </form>
               </FormProvider>
+
+              <Card.Footer open={!product?.enabled}>
+                <Card.Description>
+                  Você precisa desarquivar o produto para poder editar as informações
+                </Card.Description>
+              </Card.Footer>
             </Card.Root>
           </div>
 
@@ -220,23 +282,29 @@ function RouteComponent() {
               </div>
             </section>
 
+            <Separator />
+
             <section className="space-y-2">
               <p className="text-base font-medium">Descrição</p>
               <p>-</p>
             </section>
 
+            <Separator />
+
             <section className="space-y-2">
               <p className="text-base font-medium">Criado em</p>
               <div className="flex items-center gap-1.5 text-base">
-                <Calendar1 size={16} className="text-gray-700" />
+                <Calendar1 size={16} className="text-gray-400" />
                 <span>{formatDate(product?.created as string)}</span>
               </div>
             </section>
 
+            <Separator />
+
             <section className="space-y-2">
               <p className="text-base font-medium">Atualizado em</p>
               <div className="flex items-center gap-1.5 text-base">
-                <CalendarSync size={16} className="text-gray-700" />
+                <CalendarSync size={16} className="text-gray-400" />
                 <span>{formatDate(product?.updated as string)}</span>
               </div>
             </section>

@@ -44,7 +44,7 @@ async function rawRequest<T>({ method = "GET", path, data }: FetcherOptions): Pr
 
   // NOTE: This is a hack to simulate a slow response and testing the loading state across the app
   if (process.env.NODE_ENV === "development") {
-    const delays = [0, 0, 0, 0, 100, 200, 300]
+    const delays = [200]
     await sleep(delays[Math.floor(Math.random() * delays.length)])
   }
 

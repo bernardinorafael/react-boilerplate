@@ -32,9 +32,9 @@ const root = tv({
       info: "border-blue-500/10 bg-blue-50 text-blue-600",
       danger: "border-red-500/10 bg-red-50 text-red-600",
       primary: "border-purple-500/10 bg-purple-50 text-purple-600",
-      beta: "bg-blue-200 text-blue-500",
+      beta: "bg-[#f5f9ff] text-[#256cde]",
       slate: [
-        "border-black/[0.16] bg-gray-700 text-white",
+        "border-black/[0.16] bg-gray-500 text-white",
         "before:absolute before:inset-0 before:rounded-inherit before:bg-black/8",
       ],
       pro: [
@@ -42,7 +42,7 @@ const root = tv({
         "before:shadow-[inset_0_1px_0,inset_0_0_0_1px] before:shadow-white/10",
         "before:absolute before:inset-0 before:rounded-inherit",
       ],
-      "add-on": "border border-dashed border-blue-500 bg-blue-200 text-blue-500",
+      "add-on": "border border-dashed border-[#9fc2fb] bg-[#f5f9ff] text-[#256cde]",
     },
   },
   compoundVariants: [
@@ -109,21 +109,21 @@ function BetaBadgeEffect() {
     <div className="absolute inset-0">
       <Line
         dashArray="3.4 1"
-        className="absolute -inset-x-[0.1875rem] -top-[0.03125rem] text-blue-500"
+        className="absolute -inset-x-[0.1875rem] -top-[0.03125rem] text-[#9fc2fb]"
       />
       <Line
         dashArray="3.4 1"
-        className="absolute -inset-x-[0.1875rem] -bottom-[0.03125rem] text-blue-500"
+        className="absolute -inset-x-[0.1875rem] -bottom-[0.03125rem] text-[#9fc2fb]"
       />
       <Line
         vertical
         dashArray="3 1"
-        className="absolute -inset-y-0.5 left-[0.5px] text-blue-500"
+        className="absolute -inset-y-0.5 left-[0.5px] text-[#9fc2fb]"
       />
       <Line
         vertical
         dashArray="3 1"
-        className="absolute -inset-y-0.5 right-[0.5px] text-blue-500"
+        className="absolute -inset-y-0.5 right-[0.5px] text-[#9fc2fb]"
       />
     </div>
   )

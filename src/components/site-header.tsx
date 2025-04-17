@@ -6,7 +6,6 @@ import { Badge } from "@/src/components/badge"
 import { DropdownMenu } from "@/src/components/dropdown-menu"
 import { LogoIcon } from "@/src/components/logo-icon"
 import { toast } from "@/src/components/toast/toast"
-import { Tooltip } from "@/src/components/tooltip"
 import { Tokens } from "@/src/enums/tokens"
 import type { User } from "@/src/types/user"
 import { cn } from "@/src/util/cn"
@@ -98,25 +97,13 @@ export function SiteHeader(props: SiteHeaderProps) {
               </DropdownMenu.Trigger>
 
               <DropdownMenu.Content align="end" className="w-44">
-                <Tooltip label="Não implementado" side="left">
-                  <div>
-                    <DropdownMenu.Item disabled icon={<UserCog2 />} intent="neutral">
-                      Meu perfil
-                    </DropdownMenu.Item>
-                  </div>
-                </Tooltip>
+                <DropdownMenu.Item icon={<UserCog2 />} intent="neutral">
+                  Meu perfil
+                </DropdownMenu.Item>
 
-                <Tooltip label="Não implementado" side="left">
-                  <div>
-                    <DropdownMenu.Item
-                      disabled
-                      icon={<MessageCircleQuestion />}
-                      intent="neutral"
-                    >
-                      Feedback
-                    </DropdownMenu.Item>
-                  </div>
-                </Tooltip>
+                <DropdownMenu.Item icon={<MessageCircleQuestion />} intent="neutral">
+                  Feedback
+                </DropdownMenu.Item>
 
                 <DropdownMenu.Item
                   icon={<LogOut />}

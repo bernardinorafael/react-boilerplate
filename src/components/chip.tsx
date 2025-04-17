@@ -8,7 +8,7 @@ type ChipAttributes = ButtonHTMLAttributes<ChipRef>
 const chip = tv({
   base: [
     "[--chip-px:theme(spacing[1.5])]",
-    "[--chip-bg:theme(colors.gray.50)]",
+    "[--chip-bg:theme(colors.gray.100)]",
     "[--chip-color:--chip-color-idle]",
     "[--chip-icon-size:theme(spacing.5)]",
     "relative isolate inline-flex h-[--chip-icon-size] w-full max-w-max items-center overflow-hidden rounded-sm font-normal outline-none",
@@ -85,7 +85,7 @@ export const Chip = forwardRef(function Chip(
       data-intent={variant}
       disabled={disabled}
     >
-      <span className="-my-2 -translate-y-[var(--chip-label-translate-y,0)] truncate py-2 text-gray-600">
+      <span className="-my-2 -translate-y-[var(--chip-label-translate-y,0)] truncate py-2 text-word-secondary">
         {children}
       </span>
       {icon && icon}

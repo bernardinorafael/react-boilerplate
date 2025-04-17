@@ -147,10 +147,8 @@ export const Root = React.forwardRef<HTMLTableElement, RootTableProps>(
               <div className="-mb-[--data-table-p] flex flex-wrap items-center justify-between gap-x-8 gap-y-3 px-[--data-table-cell-px] py-3">
                 <div className="order-1 flex flex-shrink-0 items-center gap-[--data-table-limit-gap] [--data-table-limit-gap:theme(spacing.2)]">
                   <span className="inline-flex items-center text-xs font-medium [&:only-child>[role=separator]]:hidden">
-                    <span>
-                      <span className="text-xs font-medium text-word-secondary">
-                        {rangeStart}-{rangeEnd} of {count}
-                      </span>
+                    <span className="text-xs font-medium text-word-secondary">
+                      {rangeStart}-{rangeEnd} de {count}
                     </span>
                   </span>
 
@@ -195,8 +193,6 @@ export const Root = React.forwardRef<HTMLTableElement, RootTableProps>(
                         variant="secondary"
                         disabled={!hasPreviousPage}
                         onClick={() => onPageChange(page - 1)}
-                        // icon={<ChevronLeft className="size-3" />}
-                        // shape="square"
                       >
                         Anterior
                       </Button>
@@ -212,8 +208,6 @@ export const Root = React.forwardRef<HTMLTableElement, RootTableProps>(
                         variant="secondary"
                         onClick={() => onPageChange(page + 1)}
                         disabled={!hasNextPage}
-                        // icon={<ChevronRight className="size-3" />}
-                        // shape="square"
                       >
                         Próximo
                       </Button>

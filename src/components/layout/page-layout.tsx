@@ -2,7 +2,7 @@ import React from "react"
 
 import { Button } from "@/src/components/button"
 import { cn } from "@/src/util/cn"
-import { useCanGoBack, useRouter } from "@tanstack/react-router"
+import { useNavigate, type LinkProps } from "@tanstack/react-router"
 import { ArrowRight } from "lucide-react"
 
 type PageLayoutProps = {
@@ -11,25 +11,28 @@ type PageLayoutProps = {
   titleBadge?: React.ReactNode
   actions?: React.ReactNode
   children?: React.ReactNode
+  goBackLink?: {
+    to: LinkProps["to"]
+    label: string
+  }
 }
 
 export function PageLayout(props: PageLayoutProps) {
-  const router = useRouter()
-  const canGoBack = useCanGoBack()
+  const navigate = useNavigate()
 
   return (
-    <article className="group h-full space-y-4">
+    <article className="group h-full space-y-4 has-[[data-tabs]]:space-y-0">
       <header className="relative flex w-full flex-col gap-4 pb-6">
         <div className="flex w-full justify-between gap-4">
           <div className="flex flex-col gap-1">
-            {canGoBack && (
+            {props.goBackLink && (
               <Button
                 variant="link"
                 className="self-start text-purple-800"
-                onClick={() => router.history.back()}
+                onClick={() => navigate({ to: props.goBackLink?.to })}
               >
                 <div className="flex items-center gap-1">
-                  Voltar
+                  {props.goBackLink.label}
                   <ArrowRight size={14} className="stroke-[2.5px] text-word-secondary" />
                 </div>
               </Button>
