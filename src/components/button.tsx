@@ -60,9 +60,10 @@ export const buttonVariants = tv({
       link: [
         "[--b-color-bg:theme(colors.transparent)]",
         "[--b-color-ring:theme(colors.black/0.08)]",
-        "[--b-color-text:theme(colors.currentColor)]",
+        "[--b-color-text:theme(colors.purple.800)]",
         "[--b-color-icon:theme(colors.gray.500)]",
         "[--b-border-color:theme(colors.transparent)]",
+        "hover:[--b-color-text:theme(colors.purple.700)]",
       ],
     },
     shape: {
@@ -78,7 +79,7 @@ export const buttonVariants = tv({
   compoundVariants: [
     {
       variant: "link",
-      className: "px-0 hover:text-purple-700",
+      className: "h-fit px-0",
     },
   ],
 })

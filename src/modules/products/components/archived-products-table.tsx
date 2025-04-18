@@ -1,7 +1,6 @@
 import { useState } from "react"
 
 import { Badge } from "@/src/components/badge"
-import { Button } from "@/src/components/button"
 import { Chip } from "@/src/components/chip"
 import { CopyTrigger } from "@/src/components/copy-trigger"
 import * as DataTable from "@/src/components/data-table"
@@ -11,6 +10,7 @@ import { TableWithFilter } from "@/src/components/layout/table-with-filter"
 import { TableSkeletonWrapper } from "@/src/components/table-skeleton-wrapper"
 import { useQuerySearch } from "@/src/hooks/use-query-search"
 import { ExportProductsDialog } from "@/src/modules/products/components/export-products-dialog"
+import { ImportProductsDialog } from "@/src/modules/products/components/import-products-dialog"
 import type { PaginatedPayload } from "@/src/types/pagination"
 import type { Product } from "@/src/types/product"
 import { formatDate } from "@/src/util/date"
@@ -19,7 +19,7 @@ import { truncate } from "@/src/util/strings"
 import { Squircle } from "@squircle-js/react"
 import { useQuery } from "@tanstack/react-query"
 import { Link } from "@tanstack/react-router"
-import { FolderUp, Package, PackageSearch, SearchSlash } from "lucide-react"
+import { Package, PackageSearch, SearchSlash } from "lucide-react"
 import { useDebounce } from "react-use"
 import { currency } from "remask"
 
@@ -78,9 +78,7 @@ export function ArchivedProductsTable() {
       }
       action={
         <div className="inline-flex items-center gap-2">
-          <Button size="sm" variant="secondary" icon={<FolderUp />}>
-            Importar
-          </Button>
+          <ImportProductsDialog />
           <ExportProductsDialog />
         </div>
       }
