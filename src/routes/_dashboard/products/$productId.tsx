@@ -108,8 +108,9 @@ function RouteComponent() {
       toast.success("Produto atualizado com sucesso")
     },
     onSettled: () => {
-      query.invalidateQueries({ queryKey: ["product", product?.id] })
       query.invalidateQueries({ queryKey: ["products"] })
+      query.invalidateQueries({ queryKey: ["product", product?.id] })
+      query.invalidateQueries({ queryKey: ["archived-products"] })
     },
   })
 

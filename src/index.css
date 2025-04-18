@@ -12,7 +12,7 @@ html {
   }
 
   body {
-    @apply border-border-50 bg-white text-word-primary;
+    @apply border-border-50 bg-white text-base text-word-primary;
 
     font-synthesis-weight: none;
     overscroll-behavior: none;

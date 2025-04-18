@@ -1,5 +1,4 @@
 import { cn } from "@/src/util/cn"
-import { Info } from "lucide-react"
 
 export interface NoticeProps {
   children: React.ReactNode
@@ -24,12 +23,12 @@ export function Notice({ children, intent = "warning" }: NoticeProps) {
       <div
         className={cn(
           "relative flex gap-1.5 px-4 py-3 text-[0.8125rem] font-medium leading-[1.125rem]",
-          intent === "warning" && "text-orange-1000",
-          intent === "danger" && "text-red-900",
-          intent === "neutral" && "text-foreground-secondary"
+          intent === "warning" && "text-orange-600",
+          intent === "danger" && "text-red-600",
+          intent === "neutral" && "text-word-secondary"
         )}
       >
-        <span
+        {/* <span
           className={cn(
             "fill-orange-1000 z-10 mt-px",
             intent === "warning" && "fill-orange-1000",
@@ -37,9 +36,8 @@ export function Notice({ children, intent = "warning" }: NoticeProps) {
             intent === "neutral" && "fill-foreground-secondary"
           )}
         >
-          {/* <InfoIcon /> */}
           <Info size={16} />
-        </span>
+        </span> */}
         <div className="z-10">{children}</div>
       </div>
     </section>

@@ -26,7 +26,7 @@ export function Label({
       <label
         htmlFor={htmlFor}
         className={cn(
-          "flex select-none items-center gap-2 pl-[--label-padding] text-base font-medium",
+          "flex select-none items-center gap-2 pl-[--label-padding] font-medium",
           disabled && "text-gray-400",
           omitLabel && "sr-only",
           className

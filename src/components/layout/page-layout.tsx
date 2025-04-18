@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react"
 
 type PageLayoutProps = {
   title: React.ReactNode
-  description: React.ReactNode
+  description?: React.ReactNode
   titleBadge?: React.ReactNode
   actions?: React.ReactNode
   children?: React.ReactNode
