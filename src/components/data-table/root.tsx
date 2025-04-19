@@ -18,20 +18,21 @@ const root = tv({
     "bg-[--data-table-bg]",
     "p-[--data-table-p]",
     "[--data-table-border-width:theme(spacing.px)]",
-    "[--data-table-focus-ring-color:theme(colors.gray-300)]",
+    "[--data-table-focus-ring-color:theme(colors.gray.300)]",
     "[--data-table-focus-ring-width:0.1875rem]",
     "[--data-table-p:theme(spacing.1)]",
-    [
-      "[--data-table-cell-bg:theme(backgroundColor.surface.200)]",
-      "[--data-table-cell-bg-hover:theme(colors.gray.50)]",
-    ],
-
+    // Cell
+    "[--data-table-cell-bg:theme(backgroundColor.surface.200)]",
+    "[--data-table-cell-bg-hover:theme(colors.neutral.50)]",
+    // Background
     "[--data-table-bg:theme(backgroundColor.surface.100)]",
     "[--data-table-body-rounded:theme(borderRadius.xl)]",
+    // Header
     "[--data-table-header-px:--data-table-cell-px]",
     "[--data-table-header-pt:theme(spacing.3)]",
     "[--data-table-header-leading:theme(lineHeight.4)]",
     "[--data-table-header-pb:calc(var(--data-table-header-pt)-var(--data-table-border-width))]",
+    // Head
     "[--data-table-head-height:calc(var(--data-table-header-pt)+var(--data-table-header-pb)+var(--data-table-header-leading))]",
   ],
   variants: {

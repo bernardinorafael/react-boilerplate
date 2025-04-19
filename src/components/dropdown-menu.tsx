@@ -38,14 +38,19 @@ function Root({
 
 function Trigger(props: {
   disabled?: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
   triggerProps?: DropdownMenuTriggerProps
+  trigger?: React.ReactNode
 }) {
   return (
     <RadixDropdown.Trigger disabled={props.disabled} asChild>
-      <Button data-menu-trigger aria-label="dropdown menu" {...props.triggerProps}>
-        {props.children}
-      </Button>
+      {props.trigger
+        ? props.trigger
+        : props.children && (
+            <Button data-menu-trigger aria-label="dropdown menu" {...props.triggerProps}>
+              {props.children}
+            </Button>
+          )}
     </RadixDropdown.Trigger>
   )
 }
@@ -138,11 +143,11 @@ function Item({
         // Intent
         intent === "danger" && [
           "text-red-700 [&_svg]:text-red-700",
-          "focus:bg-gray-50 focus:text-word-primary [&_svg]:focus:text-word-primary",
+          "focus:bg-surface-100 focus:text-word-primary [&_svg]:focus:text-word-primary",
         ],
         intent === "neutral" && [
           "text-purple-800 [&_svg]:text-purple-800",
-          "focus:bg-gray-50 focus:text-word-primary [&_svg]:focus:text-word-primary",
+          "focus:bg-surface-100 focus:text-word-primary [&_svg]:focus:text-word-primary",
         ],
         className
       )}

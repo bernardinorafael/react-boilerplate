@@ -7,6 +7,7 @@ import * as DataTable from "@/src/components/data-table"
 import { EmptyState } from "@/src/components/empty-state"
 import { Input } from "@/src/components/input"
 import { TableWithFilter } from "@/src/components/layout/table-with-filter"
+import { Spinner } from "@/src/components/spinner"
 import { TableSkeletonWrapper } from "@/src/components/table-skeleton-wrapper"
 import { useQuerySearch } from "@/src/hooks/use-query-search"
 import { ExportProductsDialog } from "@/src/modules/products/components/export-products-dialog"
@@ -168,8 +169,6 @@ export function ProductsTable() {
 }
 
 const ProductSkeleton = () => {
-  console.log("render")
-
   return (
     <TableSkeletonWrapper
       head={tableHeaders.map((item) => ({

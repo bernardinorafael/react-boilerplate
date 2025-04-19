@@ -40,7 +40,7 @@ export function TableWithFilter(props: TableWithFilterProps) {
           ))}
       </header>
 
-      <div>{props.children}</div>
+      {props.children}
     </section>
   )
 }

@@ -25,7 +25,7 @@ export function App() {
       <NuqsAdapter>
         <QueryClientProvider client={query}>
           <RouterProvider router={router} />
-          <ReactQueryDevtools initialIsOpen={false} />
+          <ReactQueryDevtools buttonPosition="bottom-left" initialIsOpen={false} />
           <Toaster />
         </QueryClientProvider>
       </NuqsAdapter>

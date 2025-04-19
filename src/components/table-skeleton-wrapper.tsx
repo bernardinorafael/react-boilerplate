@@ -15,7 +15,6 @@ export function TableSkeletonWrapper({ children, head }: TableSkeletonProps) {
   return (
     <div
       aria-hidden
-      ref={(node) => node && node.setAttribute("inert", "")}
       aria-label="Loading skeleton table data"
       className={cn(
         "pointer-events-none relative -z-10",

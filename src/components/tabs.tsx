@@ -78,14 +78,14 @@ export function Tabs({ selected, tabs, onChange, children }: TabsProps) {
                   "flex items-center gap-1 font-medium",
                   "relative py-1.5 transition",
 
-                  "after:-z-10 after:rounded after:opacity-0",
+                  "after:z-[-10] after:rounded after:opacity-0",
                   "after:absolute after:-inset-x-2 after:-top-px after:bottom-px",
                   "hover:after:opacity-100",
 
                   t.disabled && "cursor-not-allowed opacity-50",
                   activeTab === t.value
                     ? "text-purple-800 after:bg-purple-50 enabled:hover:text-purple-800"
-                    : "after:bg-gray-50 enabled:hover:text-word-primary"
+                    : "after:bg-surface-100 enabled:hover:text-word-primary"
                 )}
               >
                 {t.label}

@@ -8,7 +8,7 @@ type ChipAttributes = ButtonHTMLAttributes<ChipRef>
 const chip = tv({
   base: [
     "[--chip-px:theme(spacing[1.5])]",
-    "[--chip-bg:theme(colors.gray.100)]",
+    "[--chip-bg:theme(backgroundColor.surface.100)]",
     "[--chip-color:--chip-color-idle]",
     "[--chip-icon-size:theme(spacing.5)]",
     "relative isolate inline-flex h-[--chip-icon-size] w-full max-w-max items-center overflow-hidden rounded-sm font-normal outline-none",

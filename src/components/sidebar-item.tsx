@@ -12,9 +12,12 @@ export function SidebarItem({ icon, label, to }: SidebarItemProps) {
     <Link
       to={to}
       className={cn(
-        "flex h-8 items-center gap-2 px-2 text-word-secondary",
-        "rounded hover:bg-white hover:shadow-xs"
+        "flex h-8 items-center gap-2 rounded px-2 text-word-secondary",
+        "transition-all hover:bg-surface-100 hover:text-word-primary"
       )}
+      activeProps={{
+        className: "hover:bg-purple-50",
+      }}
     >
       {({ isActive }) => {
         return (

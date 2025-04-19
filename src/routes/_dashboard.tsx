@@ -1,5 +1,6 @@
 import { PageLoader } from "@/src/components/page-loader"
 import { Sidebar } from "@/src/components/sidebar"
+import { SiteHeader } from "@/src/components/site-header"
 import { Tokens } from "@/src/enums/tokens"
 import type { User } from "@/src/types/user"
 import { getCookie } from "@/src/util/cookie"
@@ -45,10 +46,10 @@ function RouteComponent() {
   }
 
   return (
-    <div className="grid h-screen grid-cols-[240px_1fr] bg-[#f6f6f6]">
+    <div className="grid h-screen grid-cols-[240px_1fr]">
       <Sidebar user={user ?? ({} as User)} />
 
-      <div className="w-full overflow-y-auto bg-white shadow-xs">
+      <div className="z-12 w-full overflow-y-auto bg-white shadow-xs">
         <div className="mx-auto w-[calc(100%-theme(spacing.10))] max-w-7xl gap-12 pb-6">
           <main className="mt-6 flex-1">
             <Outlet />
