@@ -86,7 +86,7 @@ export function SiteHeader(props: SiteHeaderProps) {
                 {capitalize(props.user.name, true)}
               </span>
 
-              <Badge intent="pro">Pro</Badge>
+              <Badge intent="secondary">Basic</Badge>
             </div>
           </div>
 
