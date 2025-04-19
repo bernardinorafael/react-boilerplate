@@ -89,7 +89,6 @@ export default {
 
       backgroundColor: {
         surface: {
-          50: "var(--surface-50)",
           100: "var(--surface-100)",
           200: "var(--surface-200)",
         },

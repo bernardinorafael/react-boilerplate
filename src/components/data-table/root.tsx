@@ -25,6 +25,8 @@ const root = tv({
       "[--data-table-cell-bg:theme(backgroundColor.surface.200)]",
       "[--data-table-cell-bg-hover:theme(colors.gray.50)]",
     ],
+
+    "[--data-table-bg:theme(backgroundColor.surface.100)]",
     "[--data-table-body-rounded:theme(borderRadius.xl)]",
     "[--data-table-header-px:--data-table-cell-px]",
     "[--data-table-header-pt:theme(spacing.3)]",
@@ -33,10 +35,6 @@ const root = tv({
     "[--data-table-head-height:calc(var(--data-table-header-pt)+var(--data-table-header-pb)+var(--data-table-header-leading))]",
   ],
   variants: {
-    background: {
-      intense: "[--data-table-bg:theme(backgroundColor.surface.50)]",
-      soft: "[--data-table-bg:theme(backgroundColor.surface.100)]",
-    },
     spacing: {
       compact:
         "[--data-table-cell-px:theme(spacing.4)] [--data-table-cell-py:theme(spacing.3)]",
@@ -67,7 +65,6 @@ export const Root = React.forwardRef<HTMLTableElement, RootTableProps>(
       onPageChange,
       hasNextPage,
       hasPreviousPage,
-      background = "soft",
       spacing = "cozy",
       ...props
     },
@@ -81,11 +78,7 @@ export const Root = React.forwardRef<HTMLTableElement, RootTableProps>(
     const showFooter = count > 0 && count > Math.min(...LIMIT_PAGINATION_OPTIONS)
 
     return (
-      <section
-        data-table-root=""
-        className={root({ className, spacing, background })}
-        {...props}
-      >
+      <section data-table-root="" className={root({ className, spacing })} {...props}>
         <div
           className={cn(
             "relative isolate order-1 -mt-[--data-table-p]",

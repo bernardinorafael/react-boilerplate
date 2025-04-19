@@ -20,12 +20,9 @@ const root = tv({
     "overflow-hidden",
     "[--card-p:theme(space.1)]",
     "[--card-item-p:theme(space.4)]",
+    "bg-surface-100",
   ],
   variants: {
-    background: {
-      intense: "bg-surface-50",
-      soft: "bg-surface-100",
-    },
     spacing: {
       none: "[--card-body-px:0] [--card-body-py:0]",
       compact: "[--card-body-px:--card-item-p] [--card-body-py:--card-item-p]", // 16px × 16px
@@ -42,10 +39,8 @@ const Root = forwardRef(function CardRoot(
   {
     className,
     spacing = "cozy",
-    background = "soft",
     ...props
   }: Pick<RootAttributes, "children" | "className"> &
-    Pick<CardVariantsProps, "background"> &
     Partial<Pick<CardVariantsProps, "spacing">>,
   ref: React.ForwardedRef<RootRef>
 ) {
@@ -53,7 +48,7 @@ const Root = forwardRef(function CardRoot(
     <section
       ref={ref}
       data-card-root=""
-      className={root({ background, spacing, className })}
+      className={root({ spacing, className })}
       {...props}
     />
   )

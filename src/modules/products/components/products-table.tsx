@@ -167,30 +167,34 @@ export function ProductsTable() {
   )
 }
 
-const ProductSkeleton = () => (
-  <TableSkeletonWrapper
-    head={tableHeaders.map((item) => ({
-      label: item.label,
-      width: item.width,
-    }))}
-  >
-    {[...Array(5)].map((_, index) => (
-      <DataTable.Row key={index}>
-        <DataTable.Cell>
-          <div className="flex items-center gap-4">
-            <Squircle
-              cornerSmoothing={1}
-              cornerRadius={10}
-              className="bg-gray-100 p-2 shadow-xs"
-            >
-              <Package className="size-5 text-gray-700" />
-            </Squircle>
-            consequat aliqua officia ipsum
-          </div>
-        </DataTable.Cell>
-        <DataTable.Cell>1990</DataTable.Cell>
-        <DataTable.Cell>{formatDate(new Date())}</DataTable.Cell>
-      </DataTable.Row>
-    ))}
-  </TableSkeletonWrapper>
-)
+const ProductSkeleton = () => {
+  console.log("render")
+
+  return (
+    <TableSkeletonWrapper
+      head={tableHeaders.map((item) => ({
+        label: item.label,
+        width: item.width,
+      }))}
+    >
+      {[...Array(5)].map((_, index) => (
+        <DataTable.Row key={index}>
+          <DataTable.Cell>
+            <div className="flex items-center gap-4">
+              <Squircle
+                cornerSmoothing={1}
+                cornerRadius={10}
+                className="bg-gray-100 p-2 shadow-xs"
+              >
+                <Package className="size-5 text-gray-700" />
+              </Squircle>
+              consequat aliqua officia ipsum
+            </div>
+          </DataTable.Cell>
+          <DataTable.Cell>1990</DataTable.Cell>
+          <DataTable.Cell>{formatDate(new Date())}</DataTable.Cell>
+        </DataTable.Row>
+      ))}
+    </TableSkeletonWrapper>
+  )
+}

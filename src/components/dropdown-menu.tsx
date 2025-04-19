@@ -191,8 +191,8 @@ function SubTrigger({
         "items-center",
         "outline-none",
         // Focused
-        "focus:bg-surface-50",
-        "data-[state=open]:bg-surface-50",
+        "focus:bg-surface-100",
+        "data-[state=open]:bg-surface-100",
         // Icons
         "[&_svg]:pointer-events-none",
         "[&_svg]:size-4",
