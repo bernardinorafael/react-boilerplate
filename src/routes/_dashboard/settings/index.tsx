@@ -8,6 +8,7 @@ export const Route = createFileRoute("/_dashboard/settings/")({
 function RouteComponent() {
   return (
     <PageLayout
+      crumbs={{ current: "Configurações", paths: [] }}
       title="Configurações"
       description="officia reprehenderit ipsum ea tempor aute sit aliquip sint ullamco consequat nulla"
     >

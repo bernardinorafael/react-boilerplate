@@ -1,10 +1,8 @@
 import { useId, type ReactNode } from "react"
 
 import { AvatarPreview } from "@/src/components/avatar-preview"
-import { Badge } from "@/src/components/badge"
 import { Button } from "@/src/components/button"
 import { DropdownMenu } from "@/src/components/dropdown-menu"
-import { Separator } from "@/src/components/separator"
 import { SidebarItem } from "@/src/components/sidebar-item"
 import { toast } from "@/src/components/toast/toast"
 import { Tokens } from "@/src/enums/tokens"
@@ -16,6 +14,7 @@ import { capitalize, truncate } from "@/src/util/strings"
 import { useNavigate, type LinkProps } from "@tanstack/react-router"
 import { Chart } from "iconsax-react"
 import {
+  EllipsisVertical,
   ListOrdered,
   LogOut,
   MessageCircleQuestion,
@@ -32,7 +31,7 @@ export function Sidebar(props: SidebarProps) {
   const navigate = useNavigate()
   const internalId = useId()
 
-  const navItems: {
+  const mainNavItems: {
     id: string
     label: string
     href: LinkProps["to"]
@@ -64,6 +63,20 @@ export function Sidebar(props: SidebarProps) {
     },
   ]
 
+  const subNavItems: {
+    id: string
+    label: string
+    href: LinkProps["to"]
+    icon: ReactNode
+  }[] = [
+    {
+      id: `${internalId}-account`,
+      label: "Minha conta",
+      href: "/account",
+      icon: <UserCog2 />,
+    },
+  ]
+
   async function handleLogout() {
     try {
       await request({
@@ -85,22 +98,20 @@ export function Sidebar(props: SidebarProps) {
   }
 
   return (
-    <aside className="z-10 space-y-4 bg-white px-2 py-4">
+    <aside className="space-y-4 bg-white px-2 py-3">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger
           trigger={
             <Button full size="lg" className="w-full px-2" variant="ghost">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2.5">
                   <AvatarPreview size="sm" src={null} name={props.user.name} />
-                  <div className="flex items-center gap-2">
-                    <span className="truncate font-medium">
-                      {truncate(capitalize(props.user.name, true), 15)}
-                    </span>
-                  </div>
+                  <h2 className="font-medium">
+                    {truncate(capitalize(props.user.name, true), 15)}
+                  </h2>
                 </div>
 
-                <Badge intent="pro">Pro</Badge>
+                <EllipsisVertical size={15} className="opacity-50" />
               </div>
             </Button>
           }
@@ -123,13 +134,31 @@ export function Sidebar(props: SidebarProps) {
         </DropdownMenu.Content>
       </DropdownMenu.Root>
 
-      <Separator />
-
-      <nav className="space-y-4">
+      <nav className="grid gap-4">
         <div className="flex flex-col">
-          {navItems.map((item) => (
-            <SidebarItem icon={item.icon} to={item.href} label={capitalize(item.label)} />
+          {mainNavItems.map((item) => (
+            <SidebarItem
+              key={item.id}
+              icon={item.icon}
+              to={item.href}
+              label={capitalize(item.label)}
+            />
           ))}
+        </div>
+
+        <div className="mt-4 flex flex-col gap-2">
+          <p className="ml-2 text-xs font-medium text-word-placeholder">Configurações</p>
+
+          <div>
+            {subNavItems.map((item) => (
+              <SidebarItem
+                key={item.id}
+                icon={item.icon}
+                to={item.href}
+                label={capitalize(item.label)}
+              />
+            ))}
+          </div>
         </div>
       </nav>
     </aside>

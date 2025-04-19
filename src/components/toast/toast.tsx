@@ -96,7 +96,7 @@ export function Toaster() {
       <ToastPrimitive.Viewport
         className={cn(
           "flex w-full -translate-x-1/2 flex-col gap-3",
-          "pointer-events-none fixed bottom-8 left-1/2 z-1"
+          "pointer-events-none fixed bottom-8 left-1/2 z-50"
         )}
       />
     </ToastPrimitive.Provider>

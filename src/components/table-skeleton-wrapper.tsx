@@ -18,7 +18,7 @@ export function TableSkeletonWrapper({ children, head }: TableSkeletonProps) {
       aria-label="Loading skeleton table data"
       className={cn(
         "pointer-events-none relative -z-10",
-        "before:absolute before:inset-0 before:z-40 before:-m-6 before:backdrop-blur"
+        "before:absolute before:inset-0 before:z-40 before:-m-6 before:backdrop-blur-sm"
       )}
     >
       <motion.div

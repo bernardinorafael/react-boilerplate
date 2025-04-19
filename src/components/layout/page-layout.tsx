@@ -1,9 +1,16 @@
 import React from "react"
 
-import { Button } from "@/src/components/button"
+import { Breadcrumbs } from "@/src/components/breadcrumb"
 import { cn } from "@/src/util/cn"
-import { useNavigate, type LinkProps } from "@tanstack/react-router"
-import { ArrowRight } from "lucide-react"
+import { Link, useRouterState, type LinkProps } from "@tanstack/react-router"
+
+type Crumbs = {
+  current: string
+  paths: Array<{
+    label: string
+    to: LinkProps["to"]
+  }>
+}
 
 type PageLayoutProps = {
   title: React.ReactNode
@@ -11,33 +18,43 @@ type PageLayoutProps = {
   titleBadge?: React.ReactNode
   actions?: React.ReactNode
   children?: React.ReactNode
-  goBackLink?: {
-    to: LinkProps["to"]
-    label: string
-  }
+  crumbs: Crumbs
 }
 
 export function PageLayout(props: PageLayoutProps) {
-  const navigate = useNavigate()
+  const pathname = useRouterState().location.pathname
 
   return (
     <article className="group h-full space-y-4 has-[[data-tabs]]:space-y-0">
+      <div className="mb-4 mt-6 flex items-center justify-between">
+        <Breadcrumbs.Root>
+          <Breadcrumbs.List>
+            <Breadcrumbs.Link asChild>
+              <Link to="/">Home</Link>
+            </Breadcrumbs.Link>
+
+            {pathname !== "/" && <Breadcrumbs.Separator />}
+
+            {props.crumbs.paths.map((c) => (
+              <>
+                <Breadcrumbs.Link asChild>
+                  <Link to={c.to}>{c.label}</Link>
+                </Breadcrumbs.Link>
+                <Breadcrumbs.Separator />
+              </>
+            ))}
+            <Breadcrumbs.Item>
+              <Breadcrumbs.Page>{props.crumbs.current}</Breadcrumbs.Page>
+            </Breadcrumbs.Item>
+          </Breadcrumbs.List>
+        </Breadcrumbs.Root>
+
+        <div />
+      </div>
+
       <header className="relative flex w-full flex-col gap-4 pb-6">
         <div className="flex w-full justify-between gap-4">
           <div className="flex flex-col gap-1">
-            {props.goBackLink && (
-              <Button
-                variant="link"
-                className="self-start text-purple-800"
-                onClick={() => navigate({ to: props.goBackLink?.to })}
-              >
-                <div className="flex items-center gap-1">
-                  {props.goBackLink.label}
-                  <ArrowRight size={14} className="stroke-[2.5px] text-word-secondary" />
-                </div>
-              </Button>
-            )}
-
             <section className="flex items-center gap-2">
               <h2 className="truncate text-2xl font-semibold tracking-tight [&+*]:shrink-0">
                 {props.title}

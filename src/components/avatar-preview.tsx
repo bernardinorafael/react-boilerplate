@@ -16,7 +16,7 @@ export function AvatarPreview({
       className={cn(
         "relative flex shrink-0 rounded-full",
         size === "xs" && "size-5",
-        size === "sm" && "size-7",
+        size === "sm" && "size-6",
         size === "base" && "size-10",
         size === "lg" && "size-14",
         size === "xl" && "size-20"

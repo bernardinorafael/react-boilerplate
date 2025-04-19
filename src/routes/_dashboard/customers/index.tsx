@@ -8,6 +8,7 @@ export const Route = createFileRoute("/_dashboard/customers/")({
 function RouteComponent() {
   return (
     <PageLayout
+      crumbs={{ current: "Clientes", paths: [] }}
       title="Meus clientes"
       description="officia reprehenderit ipsum ea tempor aute sit aliquip sint ullamco consequat nulla"
     >

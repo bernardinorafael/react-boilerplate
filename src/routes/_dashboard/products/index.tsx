@@ -21,6 +21,10 @@ function RouteComponent() {
   return (
     <>
       <PageLayout
+        crumbs={{
+          current: "Produtos",
+          paths: [],
+        }}
         title="Catálogo de produtos"
         titleBadge={<Badge intent="add-on">Novo</Badge>}
         description="occaecat mollit amet aliqua eu fugiat aute nisi proident officia exercitation velit"

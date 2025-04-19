@@ -45,7 +45,7 @@ export function CopyTrigger({ children, text }: CopyTriggerProps) {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 4, scale: 0.96 }}
                   className={cn(
-                    "font-medium text-white shadow-lg will-change-transform",
+                    "z-40 font-medium text-white shadow-lg will-change-transform",
                     "rounded-[0.3125rem] bg-gray-900 px-2 py-1 text-xs"
                   )}
                 >

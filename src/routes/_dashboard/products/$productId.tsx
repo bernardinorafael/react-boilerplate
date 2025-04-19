@@ -8,6 +8,7 @@ import { Chip } from "@/src/components/chip"
 import { CopyTrigger } from "@/src/components/copy-trigger"
 import { Field } from "@/src/components/field"
 import { Fieldset } from "@/src/components/fieldset"
+import { InfoIcon } from "@/src/components/icons/info-icon"
 import { Input } from "@/src/components/input"
 import { PageLayout } from "@/src/components/layout/page-layout"
 import { PageLoader } from "@/src/components/page-loader"
@@ -134,7 +135,9 @@ function RouteComponent() {
         name: prod.name,
         price: prod.price,
       })
+      toast.success("Produto alterado com sucesso")
     },
+
     onError: (err) => {
       if (isHTTPError(err)) {
         toast.error("Houve um erro ao atualizar o produto")
@@ -155,6 +158,10 @@ function RouteComponent() {
       <PageLayout
         title={truncate(product?.name as string, 70)}
         description="Visualize e edite as informações do produto"
+        crumbs={{
+          current: String(product?.name),
+          paths: [{ label: "Produtos", to: "/products" }],
+        }}
         titleBadge={
           product?.enabled ? (
             <Badge intent="success">Ativo</Badge>
@@ -162,7 +169,6 @@ function RouteComponent() {
             <Badge intent="slate">Arquivado</Badge>
           )
         }
-        goBackLink={{ label: "Produtos", to: "/products" }}
         actions={
           <ActionDropdown
             className="w-[220px]"
@@ -194,12 +200,11 @@ function RouteComponent() {
           </ActionDropdown>
         }
       >
-        <div className="grid grid-cols-[auto_250px] gap-8">
+        <div className="grid grid-cols-[auto_290px] gap-8">
           <div className="space-y-8">
             <Card.Root spacing="compact">
               <Card.Header>
-                <Card.Title>Editar produto</Card.Title>
-                <Card.Description>Altere as informações do produto</Card.Description>
+                <Card.Title>Informações gerais</Card.Title>
               </Card.Header>
 
               <FormProvider {...form}>
@@ -211,7 +216,6 @@ function RouteComponent() {
                       <Fieldset
                         legend="Nome do produto"
                         description={[
-                          "consectetur incididunt reprehenderit",
                           "aliqua reprehenderit adipisicing qui sit magna in excepteur",
                         ]}
                       >
@@ -252,7 +256,6 @@ function RouteComponent() {
                                 onChange={field.onChange}
                                 className="max-w-[70%]"
                                 placeholder="0,00"
-                                defaultValue={product?.price}
                               />
                             </Field>
                           )}
@@ -264,9 +267,12 @@ function RouteComponent() {
               </FormProvider>
 
               <Card.Footer open={!product?.enabled}>
-                <Card.Description>
-                  Você precisa desarquivar o produto para poder editar as informações
-                </Card.Description>
+                <div className="flex items-center gap-2">
+                  <InfoIcon className="size-4 fill-word-secondary" />
+                  <Card.Description>
+                    Você precisa desarquivar o produto para poder editar as informações
+                  </Card.Description>
+                </div>
               </Card.Footer>
             </Card.Root>
           </div>

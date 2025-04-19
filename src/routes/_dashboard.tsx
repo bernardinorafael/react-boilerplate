@@ -1,6 +1,5 @@
 import { PageLoader } from "@/src/components/page-loader"
 import { Sidebar } from "@/src/components/sidebar"
-import { SiteHeader } from "@/src/components/site-header"
 import { Tokens } from "@/src/enums/tokens"
 import type { User } from "@/src/types/user"
 import { getCookie } from "@/src/util/cookie"
@@ -51,7 +50,7 @@ function RouteComponent() {
 
       <div className="z-12 w-full overflow-y-auto bg-white shadow-xs">
         <div className="mx-auto w-[calc(100%-theme(spacing.10))] max-w-7xl gap-12 pb-6">
-          <main className="mt-6 flex-1">
+          <main className="mt-4 flex-1">
             <Outlet />
           </main>
         </div>
